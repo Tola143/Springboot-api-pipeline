@@ -11,7 +11,7 @@ public class Book {
 
     private String title;
     private String author;
-    private String isbh;
+    private String isbn;
 
     // No-argument constructor
     public Book() {
@@ -22,7 +22,7 @@ public class Book {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.isbh = isbh;
+        this.isbn = isbh;
     }
 
     // Getters and setters
@@ -51,10 +51,10 @@ public class Book {
     }
 
     public String getIsbh() {
-        return isbh;
+        return isbn;
     }
 
     public void setIsbh(String isbh) {
-        this.isbh = isbh;
+        this.isbn = isbh;
     }
 }

@@ -4,6 +4,7 @@ import com.example.rest_api.model.Book;
 import com.example.rest_api.repository.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +35,19 @@ public class BookService {
         return bookRepo.save(book);
     }
 
+    // Update book
+    @Transactional
+    public Book updateBook(Long id, Book updatedBook) {
+        return bookRepo.findById(id)
+                .map(existingBook -> {
+                    existingBook.setTitle(updatedBook.getTitle());
+                    existingBook.setAuthor(updatedBook.getAuthor());
+                    existingBook.setIsbh(updatedBook.getIsbh());
+                    return bookRepo.save(existingBook);
+                })
+                .orElseThrow(() -> new RuntimeException("Book not found with id " + id));
+    }
+
     // Delete book
     public void deleteBook(Long id){
         if(bookRepo.existsById(id)){
@@ -42,4 +56,5 @@ public class BookService {
             throw new RuntimeException("Book not found with id: " + id);
         }
     }
+
 }
