@@ -8,7 +8,7 @@ WORKDIR /app
 EXPOSE 8080
 
 # Copy the built JAR file from the Gradle build directory
-COPY build/libs/workshop-0.0.1-SNAPSHOT.jar workshop.jar
+COPY build/libs/rest-api-0.0.1-SNAPSHOT.jar workshop.jar
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "workshop.jar"]
