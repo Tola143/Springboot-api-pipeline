@@ -29,6 +29,6 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-bootJar {
-	archiveFileName.set('workshop')
-}
+//bootJar {
+//	archiveFileName.set('workshop')
+//}

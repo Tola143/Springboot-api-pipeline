@@ -1,10 +1,14 @@
-# Use a lightweight JDK 17 image
-FROM openjdk:8
+# Use JDK 17 base image
+FROM openjdk:17-jdk-slim
 
-# Expose application port
+# Set working directory
+WORKDIR /app
+
+# Expose the application port
 EXPOSE 8080
 
-ADD target/workshop.jar workshop.jar
+# Copy the built JAR file from the Gradle build directory
+COPY build/libs/workshop-0.0.1-SNAPSHOT.jar workshop.jar
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "workshop.jar"]
